@@ -17,6 +17,27 @@
  * or modify functionality from its dependencies.
  */
 
-function localIntercept() {}
+function localIntercept(targets) {
+    const routes = require('./src/targets/routes.targatables');
+    routes(targets);
+
+    const AddressBookPage = require('./core-overrides/components/addressBookPage');
+    AddressBookPage(targets);
+
+    const OrderHistoryPage = require('./core-overrides/components/orderHistoryPage');
+    OrderHistoryPage(targets);
+
+    const AccountInformationPage = require('./core-overrides/components/accountInformationPage');
+    AccountInformationPage(targets);
+
+    const WishlistPage = require('./core-overrides/components/wishlistPage');
+    WishlistPage(targets);
+
+    const AccountTrigger = require('./core-overrides/components/accountTrigger');
+    AccountTrigger(targets);
+
+    const CartTrigger = require('./core-overrides/components/cartTrigger');
+    CartTrigger(targets);
+}
 
 module.exports = localIntercept;
