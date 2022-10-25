@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { useAdapter } from '@magento/peregrine/lib/talons/Adapter/useAdapter';
 import { AppContextProvider } from '@magento/venia-ui/lib/components/App';
-import App from '../App'
+import App from '../App';
 import StoreCodeRoute from '@magento/venia-ui/lib/components/StoreCodeRoute';
 
-const Adapter = props => {
+const Adapter = (props) => {
     const talonProps = useAdapter(props);
     const {
         apolloProps,

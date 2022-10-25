@@ -7,7 +7,10 @@ import useDelayedTransition from '@magento/peregrine/lib/hooks/useDelayedTransit
 import { useApp } from '@magento/peregrine/lib/talons/App/useApp';
 
 import globalCSS from '@magento/venia-ui/lib/index.module.css';
-import { HeadProvider, StoreTitle } from '@magento/venia-ui/lib/components/Head';
+import {
+    HeadProvider,
+    StoreTitle
+} from '@magento/venia-ui/lib/components/Head';
 import Main from '../Main';
 import Mask from '@magento/venia-ui/lib/components/Mask';
 import Navigation from '@magento/venia-ui/lib/components/Navigation';
@@ -25,7 +28,7 @@ const OnlineIcon = <Icon src={WifiIcon} attrs={{ width: 18 }} />;
 const OfflineIcon = <Icon src={CloudOffIcon} attrs={{ width: 18 }} />;
 const ErrorIcon = <Icon src={AlertCircleIcon} attrs={{ width: 18 }} />;
 
-const App = props => {
+const App = (props) => {
     const { markErrorHandled, renderError, unhandledErrors } = props;
     const { formatMessage } = useIntl();
     const [, { addToast }] = useToasts();
@@ -66,7 +69,7 @@ const App = props => {
             const errorToastProps = {
                 icon: ErrorIcon,
                 message: `${ERROR_MESSAGE}\nDebug: ${id} ${loc}`,
-                onDismiss: remove => {
+                onDismiss: (remove) => {
                     handleDismissError();
                     remove();
                 },

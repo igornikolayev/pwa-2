@@ -8,7 +8,7 @@ import defaultClasses from './accordion.module.css';
 const AccordionContext = createContext();
 const { Provider } = AccordionContext;
 
-const Accordion = props => {
+const Accordion = (props) => {
     const { canOpenMultiple = true, children } = props;
 
     // The talon is the source of truth for the context value.

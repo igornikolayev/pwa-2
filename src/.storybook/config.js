@@ -21,7 +21,7 @@ const loadStories = () => {
 
 const origin = process.env.MAGENTO_BACKEND_URL;
 
-addDecorator(storyFn => (
+addDecorator((storyFn) => (
     <Adapter origin={origin} store={store}>
         {storyFn()}
     </Adapter>

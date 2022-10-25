@@ -1,22 +1,16 @@
 import React, { Fragment } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { shape, string } from 'prop-types';
-import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
- import defaultClasses from '@magento/venia-ui/lib/components/Footer/footer.module.css';
- import { DEFAULT_LINKS, LOREM_IPSUM } from "@magento/venia-ui/lib/components/Footer/sampleData";
+import defaultClasses from '@magento/venia-ui/lib/components/Footer/footer.module.css';
+import { DEFAULT_LINKS } from '@magento/venia-ui/lib/components/Footer/sampleData';
 
-const Footer = props => {
+const Footer = (props) => {
     const { links } = props;
     const classes = useStyle(defaultClasses, props.classes);
-    const talonProps = useFooter();
-
-    const { copyrightText } = talonProps;
-    const { formatMessage } = useIntl();
-    const title = formatMessage({ id: 'logo.title', defaultMessage: 'Venia' });
 
     const linkGroups = Array.from(links, ([groupKey, linkProps]) => {
         const linkElements = Array.from(linkProps, ([text, pathInfo]) => {

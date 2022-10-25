@@ -21,14 +21,23 @@
     "start:debug": "node --inspect-brk ./node_modules/.bin/webpack-dev-server --progress --color --env.mode development",
     "storybook": "start-storybook -p 9001 -c src/.storybook",
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist",
-    "watch": "webpack-dev-server --progress --color --env.mode development"
+    "watch": "webpack-dev-server --progress --color --env.mode development",
+    "lint:fix": "yarn run -s lint --fix",
+    "lint:i18n": "eslint --format node_modules/eslint-plugin-i18n-json/formatter.js i18n/",
+    "lint:i18n:fix": "yarn run -s lint:i18n --fix",
+    "postinstall": "husky install",
+    "validate": "./validate.sh"
   },
   "main": "src/index.js",
   "browser": {
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "~11.4.0"
+    "@magento/pwa-buildpack": "~11.4.0",
+    "concurrently": "^7.5.0",
+    "eslint-plugin-i18n-json": "^4.0.0",
+    "husky": "^8.0.1",
+    "prettier-eslint": "^15.0.1"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",
@@ -68,7 +77,7 @@
     "css-loader": "~5.2.7",
     "dotenv": "~6.2.0",
     "eslint": "~7.32.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "~5.3.0",
     "eslint-plugin-graphql": "~4.0.0",
     "eslint-plugin-jsx-a11y": "~6.4.1",
@@ -95,7 +104,7 @@
     "node-sass": "^7.0.1",
     "postcss": "~8.3.6",
     "postcss-loader": "~4.3.0",
-    "prettier": "~1.16.4",
+    "prettier": "^2.7.1",
     "prop-types": "~15.7.2",
     "react": "~17.0.1",
     "react-dom": "~17.0.1",

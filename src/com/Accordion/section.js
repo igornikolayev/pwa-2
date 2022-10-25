@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import { useStyle } from '../../classify';
 import defaultClasses from './section.module.css';
 
-const Section = props => {
+const Section = (props) => {
     const { children, id, title, ...restProps } = props;
 
     // Remove isOpen from restProps to avoid having it in the root container
