@@ -1,4 +1,3 @@
-/* eslint-disable */
 /**
  * Custom interceptors for the project.
  *
@@ -17,6 +16,24 @@
  * or modify functionality from its dependencies.
  */
 
-function localIntercept() {}
+function localIntercept(targets) {
+    const Header = require('./core-overrides/components/header');
+    Header(targets);
+
+    const CartTrigger = require('./core-overrides/components/cartTrigger');
+    CartTrigger(targets);
+
+    const AccountChip = require('./core-overrides/components/accountChip');
+    AccountChip(targets);
+
+    const CurrencySwitcher = require('./core-overrides/components/currencySwitcher');
+    CurrencySwitcher(targets);
+
+    const SearchTrigger = require('./core-overrides/components/searchTrigger');
+    SearchTrigger(targets);
+
+    const SwitcherItem = require('./core-overrides/components/switcherItem');
+    SwitcherItem(targets);
+}
 
 module.exports = localIntercept;
