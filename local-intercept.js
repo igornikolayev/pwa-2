@@ -16,24 +16,34 @@
  * or modify functionality from its dependencies.
  */
 
+
+/* eslint-disable */
 function localIntercept(targets) {
-    const Header = require('./core-overrides/components/header');
-    Header(targets);
+    const {
+        ExtendLocalIntercept
+    } = require('@larsroettig/component-targetables');
 
-    const CartTrigger = require('./core-overrides/components/cartTrigger');
-    CartTrigger(targets);
+    const { Targetables } = require('@magento/pwa-buildpack');
+    const targetables = Targetables.using(targets);
+    const extendLocalIntercept = new ExtendLocalIntercept(targetables);
 
-    const AccountChip = require('./core-overrides/components/accountChip');
-    AccountChip(targets);
+    extendLocalIntercept
+        .allowCustomTargetables('*.targetables.js', [
+            'core-overrides/components',
+            'core-overrides/RootComponents',
+            'src/components',
+            'src/RootComponents'
+        ])
+        .then(() => console.log('Intercept custom JS done'));
 
-    const CurrencySwitcher = require('./core-overrides/components/currencySwitcher');
-    CurrencySwitcher(targets);
-
-    const SearchTrigger = require('./core-overrides/components/searchTrigger');
-    SearchTrigger(targets);
-
-    const SwitcherItem = require('./core-overrides/components/switcherItem');
-    SwitcherItem(targets);
+    extendLocalIntercept
+        .allowCssOverwrites('*.module.css', [
+            'core-overrides/components',
+            'core-overrides/RootComponents',
+            'src/components',
+            'src/RootComponents'
+        ])
+        .then(() => console.log('Intercept custom CSS done'));
 }
 
 module.exports = localIntercept;

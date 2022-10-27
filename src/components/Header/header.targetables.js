@@ -1,11 +1,4 @@
-const { Targetables } = require("@magento/pwa-buildpack");
-
-module.exports = targets => {
-    const targetables = Targetables.using(targets);
-
-    const Header = targetables.reactComponent(
-        '@magento/venia-ui/lib/components/Header/header.js'
-    );
+const interceptComponent = Header => {
     const Icon = Header.addReactLazyImport(
         '@magento/venia-ui/lib/components/Icon',
         'Icon'
@@ -22,5 +15,6 @@ module.exports = targets => {
         'div className={classes.secondaryActions}',
         "Suspense fallback={''}"
     );
+};
 
-}
+exports.interceptComponent = interceptComponent;
